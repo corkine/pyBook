@@ -5,6 +5,10 @@
 2017年12月6日
 <br>
 <br>
-CM LOVE PYTHON & Qt & GNU/LINUX
+## 项目列表
+- [每日日记提醒 ver 0.2.9b](/Project_EveryDayNotice)
+
+
+> CM LOVE PYTHON & Qt & GNU/LINUX
 <br>
-© 2017 Marvin Studio 鄂ICP备17002041号 Powered by VSCode;
+> © 2017 Marvin Studio 鄂ICP备17002041号 Powered by VSCode;
