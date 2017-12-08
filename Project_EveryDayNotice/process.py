@@ -1,39 +1,54 @@
 #!/usr/bin/env python3
 # -*- coding:utf8 -*-
-
-import sys,traceback
+'''此模块接收一个文件，从中接收参数：监控文件、数据库地址、判断的正则表达式，然后输出一个对话框'''
+import sys,traceback,os
 import PyQt5
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 import ui_processdlg
-from checkandsend import checkDaily
+from checkandsend import checkDaily,sendMail
 from PyQt5.QtPrintSupport import QPrinter,QPrintDialog
 import appsetting
 from docx import *
 PageSize = (595, 842)
+os.chdir("C:/Users/Corkine/Desktop/pyBook/Project_EveryDayNotice")
+__modelversion__ = '0.0.2'
+__UDATA__ = '''
+0.0.1 存在问题：没有写邮件系统；不能打印多页；
+0.0.2 存在问题：不能打印多页，进行的修改如下：
+    2017年12月7日修改：
+        - 添加了对于大小和位置的判断，现在显示的对话框会根据屏幕尺寸改变
+        - 增强了程序的健壮性
+        - 添加了全部打印命令
+    2017年12月8日修改：
+        - 现在发送邮件后可以直接查看结果了，不会弹出对话框，而是使用的STACKEDWIDGHT显示信息
 
-__modelversion__ = '0.0.1'
+
+'''
 
 class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
     def __init__(self,settingsfile='daily.setting',parent=None):
         super(ProcessForm,self).__init__(parent)
+        self.log = '' 
         self.setupUi(self)
-        
-
-        settingsfile=settingsfile
-        loadfile = open(settingsfile,'r')
-        thefile = loadfile.read()
-        self.address=str(thefile.split(",")[0])
-        dbaddress=str(thefile.split(",")[1])
-        emailaddress=str(thefile.split(",")[2])
-        regular=str(thefile.split(",")[3])
-        result,infomation,clist,notedict= checkDaily(address=self.address+'/',
-                regular=regular,dbaddress=dbaddress)
-
+        self.maxrect = QApplication.desktop().availableGeometry()
+        # print(self.maxrect)
+        try:
+            settingsfile=settingsfile
+            loadfile = open(settingsfile,'r')
+            thefile = loadfile.read()
+            self.address=str(thefile.split(",")[0])
+            self.dbaddress=str(thefile.split(",")[1])
+            self.emailaddress=str(thefile.split(",")[2])
+            self.regular=str(thefile.split(",")[3])
+            self.result,self.infomation,self.clist,self.notedict= checkDaily(address=self.address+'/',
+                    regular=self.regular,dbaddress=self.dbaddress)
+        except:
+            raise ImportError("相关参数没有设置")
 
         self.listWidget_files.clear()
-        self.items = clist
+        self.items = self.clist
         self.resize(400,300)
         # print(self.items)
         self.showItems()
@@ -45,6 +60,7 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
         self.pushButton_sendmail.clicked.connect(self.callSendmail)
         self.pushButton_printdlg.clicked.connect(self.callPrint)
         self.pushButton_next.clicked.connect(self.showMore)
+        self.pushButton_printall.clicked.connect(self.printAll)
 
 
         self.printer = QPrinter(QPrinter.HighResolution)
@@ -58,8 +74,9 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
         self.scene2.setSceneRect(0,0,PageSize[0],PageSize[1])
         # self.graphicsView_print.setScene(self.scene2)
 
-
-
+        self.showbefore_x = self.x()
+        self.showbefore_y = self.y()
+        self.setWindowTitle("EveryDayNotice - 文件处理程序[模块版本:%s]"%__modelversion__)
 
     def showPrintPreview(self,window='show'):
         try:
@@ -67,26 +84,49 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
             filename = self.listWidget_files.currentItem().text()
             fulladdress = self.address +'/'+ filename
             # print("地址是",fulladdress)
-            subject,text_body,status,error = self.readText(fulladdress)
+            try:
+                subject,text_body,status,error = self.readText(fulladdress)
+            except:
+                subject = text_body = status = error = ''
             # print(subject,text_body,status,error)
             if window == 'notshow':
                 self.showCurrentPage(subject,text_body)
             else:
                 if self.pushButton_quickview.text()=='预览(&V)':
                     self.stackedWidget.setCurrentIndex(1)
-                    self.resize(self.scene.width()+50,self.scene.height()+100)
+                    # self.resize(the_width+50,the_height)
+                    if self.scene.width() < self.maxrect.width():
+                        the_width = self.scene.width()
+                    else:
+                        the_width = self.maxrect.width()
+                    if self.scene.height() < self.maxrect.height():
+                        the_height = self.scene.height()
+                    else:
+                        the_height = self.maxrect.height()
+                    self.resize(the_width+50,the_height-40)
+                    self.showbefore_x = self.x()
+                    self.showbefore_y = self.y()
+                    self.move(self.x(),self.maxrect.y())
                     self.pushButton_quickview.setText("取消预览(&V)")
                     
                     self.showCurrentPage(subject,text_body)
                 elif self.pushButton_quickview.text()=='取消预览(&V)':
                     self.stackedWidget.setCurrentIndex(0)
                     self.resize(400,300)
+                    self.move(self.showbefore_x,self.showbefore_y)
                     self.pushButton_quickview.setText('预览(&V)')
                     self.pushButton_next.hide()
                 else:
                     pass
         except:
             pass
+
+    def printAll(self):
+        # self.listWidget_files.setCurrentRow(0) # 防止用户更改顺序，从0开始打印
+        for x in range(self.listWidget_files.count()):
+            self.listWidget_files.setCurrentRow(x)
+            self.showPrintPreview(window='notshow')
+            self.print_()
 
     def callSetting(slef):
         settingdlg = appsetting.Form()
@@ -100,11 +140,42 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
             self.print_()
 
     def callSendmail(self):
-        pass
+        self.callCurrentSendmail()
+        self.showLog()
+        # 一次性全部发送，不允许单个发送
+    def showLog(self):
+        logpanel = LogPanel()
+        height,width = self.size().height(),self.size().width()
+        # print(width,height)
+        self.stackedWidget.insertWidget(3,logpanel)
+        self.stackedWidget.setCurrentIndex(self.stackedWidget.count()-1)
+        logpanel.infolabel.setText(str(self.log))
+        # logpanel.infolabel.setText(str("这里展示的是输出信息"))
+        def backNow():
+            if QMessageBox.information(self,"退出程序？","处理完毕，是否要退出程序？",QMessageBox.Yes|QMessageBox.No) == QMessageBox.Yes:
+                self.close()
+            else:
+                self.stackedWidget.setCurrentIndex(0)
+                self.stackedWidget.removeWidget(logpanel)
+                self.resize(width,height)
+            # print(self.size())
+        logpanel.backbutton.clicked.connect(backNow)      
+        
+    def callCurrentSendmail(self):
+        self.log = ''
+        try:
+            result_2,result_num,result_txt,processinfo,errinfo=sendMail(self.clist,
+                self.address+'/',self.emailaddress,self.dbaddress,self.notedict)
+        except:
+            self.log += "发送失败"
+        finally:
+            self.log += str(result_2)+'\n'+processinfo+'\n'+errinfo+'\n'+result_txt
+            # print(self.log)
 
     def showItems(self):
         self.listWidget_files.addItems(self.items)
         self.listWidget_files.setCurrentRow(0)
+        # print(self.listWidget_files.count())
 
     def showCurrentPage(self,subject='',text_body=''):
         try:
@@ -163,10 +234,12 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
                 # self.label_print.clicked.connect(self.showMore)
                 self.pushButton_next.show()
                 self.pushButton_next.setText("预览第2页(&N)")
+
             else:
                 self.scene.addItem(item)
         except:
             pass
+        
     
     
     def showMore(self):
@@ -198,40 +271,28 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
         except:
             return '','','2',traceback.format_exc()
 
+class LogPanel(QWidget):
+    def __init__(self,parent=None):
+        super(LogPanel,self).__init__(parent)
+        self.infolabel = QLabel("无信息")
+        self.backbutton = QPushButton("确定(&O)")
+        self.backnow = False
+        layout = QVBoxLayout()
+        childlayout = QHBoxLayout()
+        childlayout.addWidget(self.backbutton)
+        childlayout.addStretch()
+        layout.addWidget(self.infolabel)
+        layout.addLayout(childlayout)
+        layout.addStretch()
+        self.setLayout(layout)
+        self.setWindowTitle("处理程序")
+
 
 if __name__=="__main__":
 
-
-    # settingsfile='daily.setting'
-    # # log=True
-    # # logfile='daily.log'
-    # # sendmail=False
-    # loadfile = open(settingsfile,'r')
-    # thefile = loadfile.read()
-    # address=str(thefile.split(",")[0])
-    # dbaddress=str(thefile.split(",")[1])
-    # # alertaddress = str(thefile.split(",")[4])
-    # emailaddress=str(thefile.split(",")[2])
-    # regular=str(thefile.split(",")[3])
-    # result,infomation,clist,notedict= checkDaily(address=address+'/',
-    #         regular=regular,dbaddress=dbaddress)
-    # print(111111111111111111111,result,222222222222222222222,infomation,333333333333333333333,
-        # clist,44444444444444444444,notedict)
-
-    # notefile=str(address+'/'+clist[2])
-    # print(notefile)
-    # # from docx import *
-    # document=Document(notefile)
-    # mail_text_body=''
-    # text_article = [ paragraph.text for paragraph in document.paragraphs]
-    # mail_subject=str(text_article[:1])[2:-2]
-    # for pargh in text_article[1:]:
-    #     mail_text_body+=pargh+'\n'
-    # print(mail_subject)
-    # print(mail_text_body)
-
-    # data = {}
     app = QApplication(sys.argv)
     form = ProcessForm('daily.setting')
     form.show()
+    # form2 = LogPanel()
+    # form2.show()
     app.exec_()

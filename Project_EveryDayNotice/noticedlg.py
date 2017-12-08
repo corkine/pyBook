@@ -11,6 +11,7 @@ try:
     import UI_noticedlg
     import appsetting
     import process
+    from checkandsend import checkDaily
 except:
     Tk().withdraw()
     warn = showwarning("WARNING",traceback.format_exc())
@@ -18,7 +19,7 @@ except:
 # 对于首层框架的import最好调用try语句，打印错误，不用在各个模块调用即可。
 
 # 这两行是为了check后如果更新程序输出结果用的，因为在那里还没有实例化qdialog因此不能用pyqt
-__VERSION__ = '0.2.9beta'
+__VERSION__ = '0.2.9'
 # 0.2.6 更改了一个逻辑错误：先判断，再更改值输出，这样写入到注册表的值不会出错。
 __UDATA__ ="""
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
@@ -99,17 +100,17 @@ class Form(QDialog,UI_noticedlg.Ui_Dialog):
         
         self.infomation = "咆哮吧，咆哮，怒斥那光的退缩"
 
-        result_bool,result_1,result_2,result_txt = appsetting.runCheck()
+        result_bool,result_1,result_2,result_txt = appsetting.runCheck(sendmail=False)
         if result_bool == True:
             if result_txt == '成功检索数据，但未发现新数据':
                 QMessageBox.warning(self,"提示","未发现新的日记文件,请检查后再试。")
             else:
-                QMessageBox.information(self,"处理完毕",'%s\n%s\n%s\n%s'%('处理结果：',result_1,result_2,result_txt),
-                    QMessageBox.Ok)
-                self.finalstate = 1 # 不能放前面，只有当检查过后才更改值
+                # QMessageBox.information(self,"处理完毕",'%s\n%s\n%s\n%s'%('处理结果：',result_1,result_2,result_txt),
+                #     QMessageBox.Ok)
                 processdlg = process.ProcessForm('daily.setting')
                 if processdlg.exec_():
                     pass
+                self.finalstate = 1 # 不能放前面，只有当检查过后才更改值
                 self.infomation = "不废话，直接退出"
                 self.close()
         elif result_bool == False:
@@ -200,28 +201,31 @@ class Form(QDialog,UI_noticedlg.Ui_Dialog):
 
 if __name__=="__main__":
     app = QApplication(sys.argv)
-    app.setApplicationName("Daily Notice Test")
+    app.setApplicationName("Daily Notice")
     app.setOrganizationName("Marvin Studio")
     app.setOrganizationDomain("http://www.marvinstudio.cn")
     form = Form()
     # from checkandsend import *
     # 系统会自动导入依赖，所以不用在这里继续导入，只用负责处理appsetting中传递过来的东西就好
 
-    result_bool,result_1,result_2,result_txt = appsetting.runCheck()
+    result_bool,result_1,result_2,result_txt = appsetting.runCheck(sendmail=False)
     # print('字符串1\n\n\n\n\t'+str(result_bool),'字符串2\n\n\n\n\t'+result_1,'字符串3\n\n\n\n\t'+result_2,'字符串4\n\n\n\n\t'+result_txt)
-
+    # checkDaily()
     if result_bool == True:
         if result_txt == '成功检索数据，但未发现新数据':
             form.show()
             app.exec_()
+        # else:
+        #     Tk().withdraw()
+        #     warn_info = showwarning("处理完毕",'%s\n%s\n%s\n%s'%('处理结果：',result_1,result_2,result_txt))
+        #     warn_info
+
+            # Python 自动回收了程序
         else:
-            Tk().withdraw()
-            warn_info = showwarning("处理完毕",'%s\n%s\n%s\n%s'%('处理结果：',result_1,result_2,result_txt))
-            warn_info
+            print("hello")
             processdlg = process.ProcessForm('daily.setting')
             if processdlg.exec_():
                 pass
-            # Python 自动回收了程序
     elif result_bool == False:
         print("读取设置出错,请打开程序后右键选择“配置程序”\n详细信息:%s"%result_txt)
         settingdlg = appsetting.Form()

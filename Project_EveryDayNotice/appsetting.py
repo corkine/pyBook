@@ -22,7 +22,7 @@ from PyQt5.QtWidgets import *
 import ui_setting
 
 from checkandsend import *
-# os.chdir("C:/Users/Administrator/Desktop")
+# os.chdir("C:/Users/Corkine/Desktop/pyBook/Project_EveryDayNotice")
 
 __VERSION__ = '0.2.6'
 
@@ -118,7 +118,7 @@ class Form(QDialog,ui_setting.Ui_Dialog):
                 # print(os.getcwd())
         
 
-def runCheck(settingsfile='daily.setting',log=True,logfile='daily.log',sendmail=False):
+def runCheck(settingsfile='daily.setting',log=True,logfile='daily.log',sendmail=True):
     '''runCheck()用来自动调用checkandsend.py中的函数，使用给定文件载入函数所需参数并且进行查找，其会
     返回一个bool值，并且还有处理结果。此方法接受一个bool值和一个输出地址来判断是否允许相关处理日志保存
     在给定参数的文件中，比如true，daily.log，表示接受输出，保存在daily.log参数中。
@@ -145,17 +145,21 @@ def runCheck(settingsfile='daily.setting',log=True,logfile='daily.log',sendmail=
         processinfo = errinfo = result_txt = ''
         if result == True:
             if clist != []:
-                print('需要写入的数据',clist)
-                result_2,result_num,result_txt,processinfo,errinfo= sendMail(clist,address=address+'/',emailaddress=emailaddress,
-                            dbaddress=dbaddress,preparenotedict=notedict)
-                print(result_2,'\n',processinfo,'\n',errinfo,'\n',result_txt)
+                if sendmail == True:
+                    print('需要写入的数据',clist)
+                    
+                    result_2,result_num,result_txt,processinfo,errinfo= sendMail(clist,address=address+'/',emailaddress=emailaddress,
+                                dbaddress=dbaddress,preparenotedict=notedict)
+                    print(result_2,'\n',processinfo,'\n',errinfo,'\n',result_txt)
 
-                if log == True:
-                    sys.stdout.close()
-                    sys.stdout = tmp
-                else:pass
+                    if log == True:
+                        sys.stdout.close()
+                        sys.stdout = tmp
+                    else:pass
 
-                return True,processinfo,errinfo,result_txt
+                    return True,processinfo,errinfo,result_txt
+                else:
+                    return True,'','','成功检索并发现新数据，但你选择了不发送邮件'
             
             else:
                 print("成功检索数据，但未发现新数据")
@@ -192,5 +196,6 @@ if __name__=="__main__":
     app.setOrganizationDomain("http://www.marvinstudio.cn")
     form = Form()
     form.show()
-    # print(runCheck())
+    # runCheck()
+    # print(runCheck(sendmail=False)
     app.exec_()
