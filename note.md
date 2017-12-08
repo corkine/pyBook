@@ -39,3 +39,14 @@
        [25, 36, 49, 64]])
        你可以使用 data[1][2] 提取49这个数字 当然，切片也可以使用,但是和Python不同，切片不会复制，而仅仅是原始数组的视图，并且此切片会自动传播到整个选区。使用array[a:b].copy()获得拷贝
 - 同样的，data[1,2]和data[1][2]是等价的。
+
+## ndarray的bool型索引
+### 生成和使用
+- random.randn(x,y) 生成x维 每维y个的ndarray。这里的x y 指的是普通值，从1开始而不是从0开始
+names = np.array(['bob','joe','will','bob','joe','joe','will'])
+result = (names == 'bob')&| (names != 'will')  = array([False, False,  True, False, False, False,  True], dtype=bool)
+data = random.randn(7,4)
+data[names !='bob',2:] array进行是或非运算的时候，返回的是内容类型为bool的array，此array可以作为参数对新的array进行选择比如：array[result,XXX],这在Pyhton中做不到，并且Python的and和or在ndarray中无效。
+### 赋值
+- data[data<0]=0 对一个切片器为bool的array的ndarray进行切片选择了一些数据，直接赋值为0，注意这里不需要右边赋值的东西为和左边相同的结构，类似于左边是一个list，右边的赋值对左边进行了遍历，而不是单纯对于list进行赋值
+- data[names == 'will']=0 这个也行，更高级一些。 
