@@ -1,0 +1,22 @@
+
+
+ ====================================================================================================
+============================================= Fri Dec  8 22:43:35 2017 ======================================
+==================================================================================================== 
+
+
+读取设置出错,请打开程序后右键选择“配置程序”
+详细信息:Traceback (most recent call last):
+  File "C:\Users\Administrator\Desktop\pyBook\Project_EveryDayNotice\checkandsend.py", line 29, in checkDaily
+    notelist=os.listdir(address)
+FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'C:/Users/Corkine/Documents/工作文件夹/'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Desktop\pyBook\Project_EveryDayNotice\appsetting.py", line 144, in runCheck
+    regular=regular,dbaddress=dbaddress)
+  File "C:\Users\Administrator\Desktop\pyBook\Project_EveryDayNotice\checkandsend.py", line 58, in checkDaily
+    return False,traceback.format_exc(),notefile_list,notedict
+UnboundLocalError: local variable 'notefile_list' referenced before assignment
+

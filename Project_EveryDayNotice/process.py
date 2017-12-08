@@ -12,7 +12,7 @@ from PyQt5.QtPrintSupport import QPrinter,QPrintDialog
 import appsetting
 from docx import *
 PageSize = (595, 842)
-os.chdir("C:/Users/Corkine/Desktop/pyBook/Project_EveryDayNotice")
+#os.chdir("C:/Users/Corkine/Desktop/pyBook/Project_EveryDayNotice")
 __modelversion__ = '0.0.2'
 __UDATA__ = '''
 0.0.1 存在问题：没有写邮件系统；不能打印多页；
