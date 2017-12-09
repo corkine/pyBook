@@ -6,7 +6,7 @@
 <br>
 <br>
 ## 项目列表
-- [每日日记提醒 ver 0.2.9](/Project_EveryDayNotice)
+- [每日日记提醒 ver 0.2.9c](/Project_EveryDayNotice)
 
 
 > CM LOVE PYTHON & Qt & GNU/LINUX

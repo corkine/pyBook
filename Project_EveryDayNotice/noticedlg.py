@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf8 -*-
-import sys,time,platform,traceback
+import sys,time,platform,traceback,os
 from tkinter import Tk
 from tkinter.messagebox import showwarning
 try:
@@ -16,10 +16,11 @@ except:
     Tk().withdraw()
     warn = showwarning("WARNING",traceback.format_exc())
     warn
-# 对于首层框架的import最好调用try语句，打印错误，不用在各个模块调用即可。
 
+# os.chdir("C:/Users/Administrator/Desktop\pyBook/Project_EveryDayNotice")
+# 对于首层框架的import最好调用try语句，打印错误，不用在各个模块调用即可。
 # 这两行是为了check后如果更新程序输出结果用的，因为在那里还没有实例化qdialog因此不能用pyqt
-__VERSION__ = '0.2.9'
+__VERSION__ = '0.2.9c'
 # 0.2.6 更改了一个逻辑错误：先判断，再更改值输出，这样写入到注册表的值不会出错。
 __UDATA__ ="""
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
@@ -67,7 +68,8 @@ class Form(QDialog,UI_noticedlg.Ui_Dialog):
         self.time = ''
         for ele in time.localtime()[0:3]:
             self.time += str(ele)
-        
+        self.setWindowFlag(Qt.WindowMinimizeButtonHint)
+        self.setWindowFlag(Qt.WindowCloseButtonHint,False)
         
         settings =QSettings()
         self.re_lastinfo = settings.value("MainWindow/LastDay")
@@ -175,7 +177,7 @@ class Form(QDialog,UI_noticedlg.Ui_Dialog):
                 pass
         except:
             Tk().withdraw()
-            warn_info = showwarning("WARN",traceback.format_exc())
+            warn_info = showwarning("WARN","没有检测到daily.setting文件或者从此文件中读取信息出错，请在“配置程序”中进行正确配置。")
 
     def showMe(self):
         QMessageBox.about(self,"关于此程序",
@@ -198,6 +200,12 @@ class Form(QDialog,UI_noticedlg.Ui_Dialog):
                         <p>Copyright &copy; 2017 Marvin Studio. All Right Reserved.
                         
                         """%(__VERSION__,__UDATA__,platform.python_version(),QT_VERSION_STR,PYQT_VERSION_STR))
+
+    def writeSettings(self):
+        self.finalstate = 1
+        settings = QSettings()
+        settings.setValue("MainWindow/LastDay",QVariant(self.writeInfo()))
+        settings.setValue('Data/'+self.time,QVariant(self.writeInfo()))
 
 if __name__=="__main__":
     app = QApplication(sys.argv)
@@ -222,7 +230,9 @@ if __name__=="__main__":
 
             # Python 自动回收了程序
         else:
-            print("hello")
+            # print("hello")
+
+            form.writeSettings()
             processdlg = process.ProcessForm('daily.setting')
             if processdlg.exec_():
                 pass
