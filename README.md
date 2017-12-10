@@ -8,6 +8,9 @@
 ## 项目列表
 - [每日日记提醒 ver 0.2.9c](/Project_EveryDayNotice)
 
+## 学习笔记
+- [PyQt5快速编程@2017](/Project_PyQt5NoteBook)
+
 
 > CM LOVE PYTHON & Qt & GNU/LINUX
 <br>
