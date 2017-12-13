@@ -11,6 +11,8 @@
 ## 学习笔记
 - [PyQt5快速编程@2017](/Project_PyQt5NoteBook)
 
+## Python书单和学习计划
+- [书单和计划 ver0.1](/book)
 
 > CM LOVE PYTHON & Qt & GNU/LINUX
 <br>

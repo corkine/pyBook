@@ -1,8 +1,6 @@
 # Python 书单
 
-> Written by CORKINE MA
-
-> VERSION 0.1
+> Written by CORKINE MA | VERSION 0.1
 
 
 ## 基础知识和语法
