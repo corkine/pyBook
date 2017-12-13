@@ -1,5 +1,10 @@
 # Python 书单
 
+> Written by CORKINE MA
+
+> VERSION 0.1
+
+
 ## 基础知识和语法
 
 - 《Python学习手册 第四版》，中国电力出版社
@@ -97,3 +102,6 @@
 - 爬虫、Django等项目
 - 《鸟哥的Linux私房菜 服务器架设篇》
 
+# 修订历史
+
+- 2017年12月13日 VERSION 0.1
