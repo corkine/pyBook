@@ -22,4 +22,4 @@ python文件可以在任何安装了PyQt5和SIP的绝大部分现代计算机系
 - 自定义拖拽组件
 - 子进程和输出流的截取与呈现
 
-> [查看项目和文件](/Project_PyQt5_RCC_UIC_Maker)
+> [查看项目和文件](https://github.com/corkine/pyBook/tree/master/Project_PyQt5_RCC_UIC_Maker)
