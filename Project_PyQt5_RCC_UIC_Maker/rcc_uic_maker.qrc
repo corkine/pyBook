@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="Main">
+    <file>Media/uic_rcc_logo.png</file>
+  </qresource>
+</RCC>
