@@ -30,6 +30,6 @@
 
 ## 兼容和依赖
 
-本程序使用 Python 3 + Qt 5 + PyQt 5构建，运行代码需要 Python 3 和 PyQt 5 以及 SIP 的安装，同时提供了一个直接执行文件，在/dist目录下，直接下载解压后可以使用。[点此下载](/Project_RmoveNewlines/dist/removefucknewlines.rar)
+本程序使用 Python 3 + Qt 5 + PyQt 5构建，运行代码需要 Python 3 和 PyQt 5 以及 SIP 的安装，同时提供了一个直接执行文件，在/dist目录下，直接下载解压后可以使用，不需要手动安装Python以及其依赖，要求x64位 Windows操作系统。[点此下载exe文件](/Project_RmoveNewlines/dist/removefucknewlines.rar)
 
 > [查看项目和文件](https://github.com/corkine/pyBook/tree/master/Project_RmoveNewlines)
