@@ -12,6 +12,7 @@ try:
     import appsetting
     import process
     from checkandsend import checkDaily
+    import RC_everydaynotice
 except:
     Tk().withdraw()
     warn = showwarning("WARNING",traceback.format_exc())
@@ -20,34 +21,23 @@ except:
 # os.chdir("C:/Users/Administrator/Desktop\pyBook/Project_EveryDayNotice")
 # 对于首层框架的import最好调用try语句，打印错误，不用在各个模块调用即可。
 # 这两行是为了check后如果更新程序输出结果用的，因为在那里还没有实例化qdialog因此不能用pyqt
-__VERSION__ = '0.2.9c'
+__VERSION__ = '0.2.9d'
 # 0.2.6 更改了一个逻辑错误：先判断，再更改值输出，这样写入到注册表的值不会出错。
 __UDATA__ ="""
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
-<html><head><meta name="qrichtext" content="1" /><style type="text/css">
-p, li { white-space: pre-wrap; }
-</style></head><body style=" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;">
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; text-decoration: underline;">版本 0.2.6</span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; text-decoration: underline;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1、修复了点击右上角关闭按钮的时候，注册表记录当日日记状态为“完成”这一错误。</p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2、添加了“更新日志”菜单和对话框，程序更加完善。</p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; text-decoration: underline;">版本 0.2.5</span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; text-decoration: underline;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1、添加了“检测日记文件”功能，现在程序不仅会在运行前检查日记文件，当弹出提醒，用户点击“完成了”之后，只有在相应目录找到日记文件，提醒程序才会自动关闭，否则，你只有强制关闭。</p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; text-decoration: underline;">版本 0.2.0</span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; text-decoration: underline;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1、添加了“完成了”按钮，不再将这个选项隐藏到菜单中了。</p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; text-decoration: underline;">版本 0.1.0</span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; text-decoration: underline;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1、程序由VB.NET语言迁移到Python + Qt语言开发。</p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; text-decoration: underline;">即将更新功能：</span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">- 积分和奖励系统 [预计1.0.0]</p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">- 对一个文件包含几天日记的算法的判断 [预计0.3.0]</p></body></html>
+<html><head/><body>
+<p><span style=" font-weight:600; text-decoration: underline;">版本 0.2.9</span></p>
+<p>1、增加了一个统一处理文件的对话框，可以对其进行打印预览、批量发送邮件。</p>
+<p>2、添加和更新了一个新的图标作为Logo。</p><p><span style=" font-weight:600; text-decoration: underline;">版本 0.2.6</span></p><p>1、修复了点击右上角关闭按钮的时候，注册表记录当日日记状态为“完成”这一错误。</p>
+<p>2、添加了“更新日志”菜单和对话框，程序更加完善。</p>
+<p><span style=" font-weight:600; text-decoration: underline;">版本 0.2.5</span></p>
+<p>1、添加了“检测日记文件”功能，现在程序不仅会在运行前检查日记文件，当弹出提醒，用户点击“完成了”之后，只有在相应目录找到日记文件，提醒程序才会自动关闭，否则，你只有强制关闭。</p>
+<p><span style=" font-weight:600; text-decoration: underline;">版本 0.2.0</span></p>
+<p>1、添加了“完成了”按钮，不再将这个选项隐藏到菜单中了。</p>
+<p><span style=" font-weight:600; text-decoration: underline;">版本 0.1.0</span></p>
+<p>1、程序由VB.NET语言迁移到Python + Qt语言开发。</p>
+<p><span style=" font-weight:600; text-decoration: underline;">即将更新功能：</span></p>
+<p>- 积分和奖励系统 [预计1.0.0]</p><p>- 对一个文件包含几天日记的算法的判断 [预计0.3.0]</p>
+</body></html>
 """
 StyleSheet="""
 QLabel#label_num{
@@ -212,6 +202,7 @@ if __name__=="__main__":
     app.setApplicationName("Daily Notice")
     app.setOrganizationName("Marvin Studio")
     app.setOrganizationDomain("http://www.marvinstudio.cn")
+    app.setWindowIcon(QIcon(":/Main/Media/logo.png"))
     form = Form()
     # from checkandsend import *
     # 系统会自动导入依赖，所以不用在这里继续导入，只用负责处理appsetting中传递过来的东西就好

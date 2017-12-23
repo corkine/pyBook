@@ -12,8 +12,9 @@ from PyQt5.QtPrintSupport import QPrinter,QPrintDialog
 import appsetting
 from docx import *
 PageSize = (595, 842)
-#os.chdir("C:/Users/Corkine/Desktop/pyBook/Project_EveryDayNotice")
-__modelversion__ = '0.0.2'
+# 调试模块关闭此条注释，其余情况应注释掉此语句。此语句被用来寻找daily.setting文件。
+# os.chdir(r"C:\Users\Administrator\Desktop\pyBook\Project_EveryDayNotice")
+__modelversion__ = '0.0.3'
 __UDATA__ = '''
 0.0.1 存在问题：没有写邮件系统；不能打印多页；
 0.0.2 存在问题：不能打印多页，进行的修改如下：
@@ -23,7 +24,7 @@ __UDATA__ = '''
         - 添加了全部打印命令
     2017年12月8日修改：
         - 现在发送邮件后可以直接查看结果了，不会弹出对话框，而是使用的STACKEDWIDGHT显示信息
-
+0.0.3 解决问题：现在可以打印最多两页了，因为对于日记我自己有限制，所以两页够了。修正了点击“设置”按钮并更改设置后程序不会更新列表的问题。
 
 '''
 
@@ -33,24 +34,10 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
         self.log = '' 
         self.setupUi(self)
         self.maxrect = QApplication.desktop().availableGeometry()
-        # print(self.maxrect)
-        try:
-            settingsfile=settingsfile
-            loadfile = open(settingsfile,'r')
-            thefile = loadfile.read()
-            self.address=str(thefile.split(",")[0])
-            self.dbaddress=str(thefile.split(",")[1])
-            self.emailaddress=str(thefile.split(",")[2])
-            self.regular=str(thefile.split(",")[3])
-            self.result,self.infomation,self.clist,self.notedict= checkDaily(address=self.address+'/',
-                    regular=self.regular,dbaddress=self.dbaddress)
-        except:
-            raise ImportError("相关参数没有设置")
-
+        self.checkFromFile(settingsfile=settingsfile)
+        self.settingsfile = settingsfile # 调用设置更新后需要使用
         self.listWidget_files.clear()
-        self.items = self.clist
         self.resize(400,300)
-        # print(self.items)
         self.showItems()
         self.pushButton_next.hide()
 
@@ -66,17 +53,32 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
         self.printer = QPrinter(QPrinter.HighResolution)
         self.printer.setPageSize(QPrinter.A4)
 
-        # self.view = QGraphicsView()
         self.scene = QGraphicsScene(self)
         self.scene.setSceneRect(0,0,PageSize[0],PageSize[1])
         self.graphicsView_print.setScene(self.scene)
         self.scene2 = QGraphicsScene(self)
         self.scene2.setSceneRect(0,0,PageSize[0],PageSize[1])
-        # self.graphicsView_print.setScene(self.scene2)
+        self.graphicsView_print.setScene(self.scene2)
 
         self.showbefore_x = self.x()
         self.showbefore_y = self.y()
         self.setWindowTitle("EveryDayNotice - 文件处理程序[模块版本:%s]"%__modelversion__)
+
+    def checkFromFile(self,settingsfile=''):
+        try:
+            settingsfile=settingsfile
+            loadfile = open(settingsfile,'r')
+            thefile = loadfile.read()
+            self.address=str(thefile.split(",")[0])
+            self.dbaddress=str(thefile.split(",")[1])
+            self.emailaddress=str(thefile.split(",")[2])
+            self.regular=str(thefile.split(",")[3])
+            self.result,self.infomation,self.clist,self.notedict= checkDaily(address=self.address+'/',
+                    regular=self.regular,dbaddress=self.dbaddress)
+            self.items = self.clist
+        except:
+            raise ImportError("相关参数没有设置")
+            # QMessageBox.information(self,"WARN",str(traceback.format_exc()))
 
     def showPrintPreview(self,window='show'):
         try:
@@ -106,7 +108,7 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
                     self.resize(the_width+50,the_height-40)
                     self.showbefore_x = self.x()
                     self.showbefore_y = self.y()
-                    self.move(self.x(),self.maxrect.y())
+                    self.move(self.x(),self.maxrect.y()+40)
                     self.pushButton_quickview.setText("取消预览(&V)")
                     
                     self.showCurrentPage(subject,text_body)
@@ -128,10 +130,11 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
             self.showPrintPreview(window='notshow')
             self.print_()
 
-    def callSetting(slef):
+    def callSetting(self):
         settingdlg = appsetting.Form()
         if settingdlg.exec_():
-            pass
+            self.checkFromFile(settingsfile=self.settingsfile)
+            self.showItems()
 
     def callPrint(self):
         self.showPrintPreview(window='notshow') # 防止不经预览直接打印空白
@@ -170,15 +173,15 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
             self.log += "发送失败"
         finally:
             self.log += str(result_2)+'\n'+processinfo+'\n'+errinfo+'\n'+result_txt
-            # print(self.log)
 
     def showItems(self):
+        self.listWidget_files.clear()
         self.listWidget_files.addItems(self.items)
         self.listWidget_files.setCurrentRow(0)
-        # print(self.listWidget_files.count())
 
     def showCurrentPage(self,subject='',text_body=''):
         try:
+            self.label_print.setText("打印预览")
             self.scene.clear()
             
             self.scene2.clear()
@@ -202,6 +205,7 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
             # print(item.sceneBoundingRect().x(),item.sceneBoundingRect().y())
             # print(item.boundingRect())
             if item.boundingRect().height() > 722:
+                # print("发生多页情况")
                 i = 1
                 while True:
                     item.setPlainText("")
@@ -235,10 +239,13 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
                 self.pushButton_next.show()
                 self.pushButton_next.setText("预览第2页(&N)")
 
+                self.printMore = True
+                # self.scene.addItem(item)
             else:
+                self.printMore = False
                 self.scene.addItem(item)
         except:
-            pass
+            QMessageBox.information(self,"WARN",str(traceback.format_exc()))
         
     
     
@@ -254,10 +261,13 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
         painter.setRenderHint(QPainter.Antialiasing)
         painter.setRenderHint(QPainter.TextAntialiasing)
         self.scene.render(painter)
+        if self.printMore == True:
+            result = self.printer.newPage()
+            # print("打印机调用结果----->",result,"\n\nprintMore属性为","%s"%self.printMore)
         # painter2 = QPainter(self.printer)
         # painter2.setRenderHint(QPainter.Antialiasing)
         # painter2.setRenderHint(QPainter.TextAntialiasing)
-        # self.scene2.render(painter2)
+        self.scene2.render(painter)
 
     def readText(self,fulladdress=''):
         try:

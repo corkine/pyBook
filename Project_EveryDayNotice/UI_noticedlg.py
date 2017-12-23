@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'noticedlg.ui'
+# Form implementation generated from reading ui file 'C:\Users\Administrator\Desktop\pyBook\Project_EveryDayNotice\noticedlg.ui'
 #
 # Created by: PyQt5 UI code generator 5.9
 #
@@ -13,9 +13,6 @@ class Ui_Dialog(object):
         Dialog.setObjectName("Dialog")
         Dialog.setWindowModality(QtCore.Qt.NonModal)
         Dialog.resize(619, 374)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../Pictures/wind_and_girl.gif"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        Dialog.setWindowIcon(icon)
         Dialog.setSizeGripEnabled(False)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(Dialog)
         self.verticalLayout_2.setObjectName("verticalLayout_2")

@@ -16,10 +16,6 @@
   <property name="windowTitle">
    <string>每日日记提醒</string>
   </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>../Pictures/wind_and_girl.gif</normaloff>../Pictures/wind_and_girl.gif</iconset>
-  </property>
   <property name="sizeGripEnabled">
    <bool>false</bool>
   </property>
