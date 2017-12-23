@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="Main">
+    <file>Media/logo_checked.png</file>
+    <file>Media/logo.png</file>
+  </qresource>
+</RCC>
