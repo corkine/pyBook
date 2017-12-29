@@ -21,7 +21,7 @@ except:
 # os.chdir("C:/Users/Administrator/Desktop\pyBook/Project_EveryDayNotice")
 # 对于首层框架的import最好调用try语句，打印错误，不用在各个模块调用即可。
 # 这两行是为了check后如果更新程序输出结果用的，因为在那里还没有实例化qdialog因此不能用pyqt
-__VERSION__ = '0.2.9d'
+__VERSION__ = '0.2.9e'
 # 0.2.6 更改了一个逻辑错误：先判断，再更改值输出，这样写入到注册表的值不会出错。
 __UDATA__ ="""
 <html><head/><body>
@@ -34,9 +34,8 @@ __UDATA__ ="""
 <p><span style=" font-weight:600; text-decoration: underline;">版本 0.2.0</span></p>
 <p>1、添加了“完成了”按钮，不再将这个选项隐藏到菜单中了。</p>
 <p><span style=" font-weight:600; text-decoration: underline;">版本 0.1.0</span></p>
-<p>1、程序由VB.NET语言迁移到Python + Qt语言开发。</p>
-<p><span style=" font-weight:600; text-decoration: underline;">即将更新功能：</span></p>
-<p>- 积分和奖励系统 [预计1.0.0]</p><p>- 对一个文件包含几天日记的算法的判断 [预计0.3.0]</p>
+<p>1、程序由VB.NET语言迁移到Python + Qt开发。</p>
+<p>更多更新记录请访问<a href="http://pybook.mazhangjing.com/Project_EveryDayNotice/"><span style=" text-decoration: underline; color:#0000ff;">本程序官方网站</span></a></p>
 </body></html>
 """
 StyleSheet="""
@@ -176,7 +175,8 @@ class Form(QDialog,UI_noticedlg.Ui_Dialog):
                         <p>Written by Corkine Ma (cm@marvinstudio.cn)
                         <p>此程序主要功能为日记提醒。程序检查文件夹中是否有符合正则表达式的日记文件，如果有
                         则自动发送到指定邮箱，相关参数可使用右键进行配置。此程序遵守GPL v2协议开源。
-                        <p>本程序引用库：Python %s , Qt %s , PyQt %s
+                        <p><a href="http://pybook.mazhangjing.com/Project_EveryDayNotice/"><span style=" text-decoration: underline; color:#0000ff;">本程序官方网站</span></a>
+                        本程序使用了：Python %s , Qt %s , PyQt %s</p>
                         <p>Copyright &copy; 2017 Marvin Studio. All Right Reserved.
                         
                         """%(__VERSION__,platform.python_version(),QT_VERSION_STR,PYQT_VERSION_STR))

@@ -22,7 +22,7 @@ from PyQt5.QtWidgets import *
 import ui_setting
 
 from checkandsend import *
-# os.chdir("C:/Users/Corkine/Desktop/pyBook/Project_EveryDayNotice")
+# os.chdir(r"C:\Users\Administrator\Desktop\pyBook\Project_EveryDayNotice")
 
 __VERSION__ = '0.2.6'
 

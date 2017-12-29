@@ -11,10 +11,10 @@ from checkandsend import checkDaily,sendMail
 from PyQt5.QtPrintSupport import QPrinter,QPrintDialog
 import appsetting
 from docx import *
-PageSize = (595, 842)
+PageSize = (570 ,795)
 # 调试模块关闭此条注释，其余情况应注释掉此语句。此语句被用来寻找daily.setting文件。
 # os.chdir(r"C:\Users\Administrator\Desktop\pyBook\Project_EveryDayNotice")
-__modelversion__ = '0.0.3'
+__modelversion__ = '0.1.0'
 __UDATA__ = '''
 0.0.1 存在问题：没有写邮件系统；不能打印多页；
 0.0.2 存在问题：不能打印多页，进行的修改如下：
@@ -25,7 +25,8 @@ __UDATA__ = '''
     2017年12月8日修改：
         - 现在发送邮件后可以直接查看结果了，不会弹出对话框，而是使用的STACKEDWIDGHT显示信息
 0.0.3 解决问题：现在可以打印最多两页了，因为对于日记我自己有限制，所以两页够了。修正了点击“设置”按钮并更改设置后程序不会更新列表的问题。
-
+0.1.0 解决问题：添加了一个QTimer，现在程序启动时会先启动界面，然后进行文件检索。如果进行文件检索出错，不再抛出异常，而是使用QMessageBox来显示异常（因为在程序内可以通过设置按钮进行调整）。
+    多达4页的打印支持，更改打印媒介为大学信纸而非A4，但A4也可以打印（2017年12月29日）
 '''
 
 class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
@@ -34,11 +35,11 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
         self.log = '' 
         self.setupUi(self)
         self.maxrect = QApplication.desktop().availableGeometry()
-        self.checkFromFile(settingsfile=settingsfile)
+        self.pagenumber = 1
         self.settingsfile = settingsfile # 调用设置更新后需要使用
         self.listWidget_files.clear()
         self.resize(400,300)
-        self.showItems()
+        QTimer.singleShot(0,self.initialLoad)
         self.pushButton_next.hide()
 
         self.pushButton_quickview.clicked.connect(self.showPrintPreview)
@@ -51,7 +52,9 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
 
 
         self.printer = QPrinter(QPrinter.HighResolution)
-        self.printer.setPageSize(QPrinter.A4)
+        self.pagesize = QPageSize(QSize(PageSize[0],PageSize[1]))
+        
+        self.printer.setPageSize(self.pagesize)
 
         self.scene = QGraphicsScene(self)
         self.scene.setSceneRect(0,0,PageSize[0],PageSize[1])
@@ -59,10 +62,20 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
         self.scene2 = QGraphicsScene(self)
         self.scene2.setSceneRect(0,0,PageSize[0],PageSize[1])
         self.graphicsView_print.setScene(self.scene2)
+        self.scene3 = QGraphicsScene(self)
+        self.scene3.setSceneRect(0,0,PageSize[0],PageSize[1])
+        self.graphicsView_print.setScene(self.scene3)
+        self.scene4 = QGraphicsScene(self)
+        self.scene4.setSceneRect(0,0,PageSize[0],PageSize[1])
+        self.graphicsView_print.setScene(self.scene4)
 
         self.showbefore_x = self.x()
         self.showbefore_y = self.y()
-        self.setWindowTitle("EveryDayNotice - 文件处理程序[模块版本:%s]"%__modelversion__)
+        self.setWindowTitle("EveryDayNotice - 文件处理程序 [模块版本:%s]"%__modelversion__)
+
+    def initialLoad(self):
+        self.checkFromFile(settingsfile=self.settingsfile)
+        self.showItems()
 
     def checkFromFile(self,settingsfile=''):
         try:
@@ -77,7 +90,7 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
                     regular=self.regular,dbaddress=self.dbaddress)
             self.items = self.clist
         except:
-            raise ImportError("相关参数没有设置")
+            raise ValueError("相关参数没有设置或设置错误")
             # QMessageBox.information(self,"WARN",str(traceback.format_exc()))
 
     def showPrintPreview(self,window='show'):
@@ -146,6 +159,7 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
         self.callCurrentSendmail()
         self.showLog()
         # 一次性全部发送，不允许单个发送
+
     def showLog(self):
         logpanel = LogPanel()
         height,width = self.size().height(),self.size().width()
@@ -180,31 +194,42 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
         self.listWidget_files.setCurrentRow(0)
 
     def showCurrentPage(self,subject='',text_body=''):
+        self.pagenumber = 1
+        maxsize = 580
         try:
             self.label_print.setText("打印预览")
             self.scene.clear()
-            
             self.scene2.clear()
+            self.scene3.clear()
+            self.scene4.clear()
             item = QGraphicsTextItem()
             # item.setboundingRect(QRectF(0,0,PageSize[0],PageSize[1]))
-            item.setFont(QFont('宋体',16))
-            item.setX(50)
-            item.setY(50)
+            font_s16 = QFont('宋体',16)
+            font_s16.setFixedPitch(True)
+            item.setFont(font_s16)
+            item.setX(30)
+            item.setY(140)
             item.setFont(QFont('Times New Roman',16))
             item.setPlainText(subject)
             self.scene.addItem(item)
 
             item = QGraphicsTextItem()
-            item.setY(100)
-            item.setX(50)
-            item.setTextWidth(PageSize[0]-100)
-
-            item.setFont(QFont('宋体',8))
-            item.setFont(QFont('Times New Roman',8))
+            item.setY(180)
+            item.setX(30)
+            item.setTextWidth(PageSize[0]-80)
+            
+            font_s8 = QFont('宋体',8)
+            font_t8 = QFont('Times New Roman',8)
+            # font_s8.setFixedPitch(True)
+            # font_t8.setFixedPitch(True)
+            item.setFont(font_s8)
+            item.setFont(font_t8)
             item.setPlainText(text_body.replace('\n','\n\n'))
             # print(item.sceneBoundingRect().x(),item.sceneBoundingRect().y())
             # print(item.boundingRect())
-            if item.boundingRect().height() > 722:
+
+            if item.boundingRect().height() > maxsize:
+                self.pagenumber += 1
                 # print("发生多页情况")
                 i = 1
                 while True:
@@ -215,7 +240,7 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
                     adjust_content_A = "\n\n".join(try_it)
                     # print("最后调整",'+'*100,adjust_content_A)
                     item.setPlainText(adjust_content_A)
-                    if item.boundingRect().height() < 740:
+                    if item.boundingRect().height() < maxsize:
                         adjust_content_B = "\n\n".join(text_body.split("\n")[-i:])
                         # print('**'*100,adjust_content_B)
                         break
@@ -224,15 +249,74 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
                 self.scene.addItem(item)
 
                 item2 = QGraphicsTextItem()
-                item2.setY(50)
-                item2.setX(50)
-                item2.setTextWidth(PageSize[0]-100)
-                item2.setFont(QFont('宋体',8))
-                item2.setFont(QFont('Times New Roman',8))
+                item2.setY(140)
+                item2.setX(30)
+                item2.setTextWidth(PageSize[0]-80)
+                item2.setFont(font_s8)
+                item2.setFont(font_t8)
                 item2.setPlainText(adjust_content_B)
-                
+
+                text_body = adjust_content_B.replace("\n\n","\n")
+                # print(text_body)
+                if item2.boundingRect().height() > maxsize:
+                    self.pagenumber += 1
+                    i = 1
+                    while True:
+                        item2.setPlainText("")
+                        try_it = text_body.split("\n")
+                        try_it = try_it[:-i]
+                        # print(try_it)
+                        adjust_content_A = "\n\n".join(try_it)
+                        # print("最后调整",'+'*100,adjust_content_A)
+                        item2.setPlainText(adjust_content_A)
+                        if item2.boundingRect().height() < maxsize:
+                            adjust_content_B = "\n\n".join(text_body.split("\n")[-i:])
+                            # print('**'*100,adjust_content_B)
+                            break
+                        else:pass
+                        i = i + 1
 
                 self.scene2.addItem(item2)
+
+                item3 = QGraphicsTextItem()
+                item3.setY(140)
+                item3.setX(30)
+                item3.setTextWidth(PageSize[0]-80)
+                item3.setFont(font_s8)
+                item3.setFont(font_t8)
+                item3.setPlainText(adjust_content_B)
+
+                text_body = adjust_content_B.replace("\n\n","\n")
+                # print(text_body)
+                if item3.boundingRect().height() > maxsize:
+                    self.pagenumber += 1
+                    i = 1
+                    while True:
+                        item3.setPlainText("")
+                        try_it = text_body.split("\n")
+                        try_it = try_it[:-i]
+                        # print(try_it)
+                        adjust_content_A = "\n\n".join(try_it)
+                        # print("最后调整",'+'*100,adjust_content_A)
+                        item3.setPlainText(adjust_content_A)
+                        if item3.boundingRect().height() < maxsize:
+                            adjust_content_B = "\n\n".join(text_body.split("\n")[-i:])
+                            # print('**'*100,adjust_content_B)
+                            break
+                        else:pass
+                        i = i + 1
+
+                self.scene3.addItem(item3)
+
+                item4 = QGraphicsTextItem()
+                item4.setY(140)
+                item4.setX(30)
+                item4.setTextWidth(PageSize[0]-80)
+                item4.setFont(font_s8)
+                item4.setFont(font_t8)
+                item4.setPlainText(adjust_content_B)
+
+                self.scene4.addItem(item4)
 
                 self.label_print.setText("打印预览(多页...)")
                 # self.label_print.clicked.connect(self.showMore)
@@ -250,24 +334,45 @@ class ProcessForm(QDialog,ui_processdlg.Ui_processDlg):
     
     
     def showMore(self):
-        self.graphicsView_print.setScene(self.scene2)
-        self.pushButton_next.hide()
+        if self.pushButton_next.text() == "预览第2页(&N)":
+            self.graphicsView_print.setScene(self.scene2)
+            if self.pagenumber > 2:
+                self.pushButton_next.setText("预览第3页(&N)")
+            else:
+                self.pushButton_next.hide()
+        elif self.pushButton_next.text() == "预览第3页(&N)":
+            self.graphicsView_print.setScene(self.scene3)
+            if self.pagenumber > 3:
+                self.pushButton_next.setText("预览第4页(&N)")
+            else:
+                self.pushButton_next.hide()
+        elif self.pushButton_next.text() == "预览第4页(&N)":
+            self.graphicsView_print.setScene(self.scene4)
+            self.pushButton_next.hide()
 
 
-
+ 
     def print_(self):
         self.showPrintPreview(False) # 防止不经预览直接打印空白
         painter = QPainter(self.printer)
         painter.setRenderHint(QPainter.Antialiasing)
         painter.setRenderHint(QPainter.TextAntialiasing)
         self.scene.render(painter)
-        if self.printMore == True:
-            result = self.printer.newPage()
-            # print("打印机调用结果----->",result,"\n\nprintMore属性为","%s"%self.printMore)
-        # painter2 = QPainter(self.printer)
-        # painter2.setRenderHint(QPainter.Antialiasing)
-        # painter2.setRenderHint(QPainter.TextAntialiasing)
-        self.scene2.render(painter)
+        if self.pagenumber == 2:
+            self.printer.newPage()
+            self.scene2.render(painter)
+        elif self.pagenumber == 3:
+            self.printer.newPage()
+            self.scene2.render(painter)   
+            self.printer.newPage()
+            self.scene3.render(painter)
+        elif self.pagenumber == 4:
+            self.printer.newPage()
+            self.scene2.render(painter)   
+            self.printer.newPage()
+            self.scene3.render(painter)
+            self.printer.newPage()
+            self.scene4.render(painter)                                               
 
     def readText(self,fulladdress=''):
         try:
@@ -301,8 +406,17 @@ class LogPanel(QWidget):
 if __name__=="__main__":
 
     app = QApplication(sys.argv)
-    form = ProcessForm('daily.setting')
-    form.show()
+    try:
+        form = ProcessForm('daily.setting')
+        form.show()
+        
+    except:
+        warn = QMessageBox()
+        warn.setWindowTitle("WARN")
+        warn.setText(str(traceback.format_exc()))
+        warn.exec_()
+        setting_form = appsetting.Form()
+        setting_form.show()
     # form2 = LogPanel()
     # form2.show()
     app.exec_()

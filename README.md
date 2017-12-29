@@ -6,7 +6,7 @@
 <br>
 <br>
 ## 项目列表
-- [每日日记提醒 ver 0.2.9d](/Project_EveryDayNotice)
+- [每日日记提醒 ver 0.2.9e](/Project_EveryDayNotice)
 - [PyQt5 UIC & RCC Maker ver 0.1.0](/Project_PyQt5_RCC_UIC_Maker)
 - [去除论文复制中产生的“\\n”新行标识符 ver 1.0.0](/Project_RmoveNewlines)
 
