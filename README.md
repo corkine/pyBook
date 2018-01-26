@@ -9,6 +9,7 @@
 - [每日日记提醒 ver 0.2.9e](/Project_EveryDayNotice)
 - [PyQt5 UIC & RCC Maker ver 0.1.0](/Project_PyQt5_RCC_UIC_Maker)
 - [去除论文复制中产生的“\\n”新行标识符 ver 1.0.0](/Project_RmoveNewlines)
+- [CCNU校园网自动登录器 ver 0.3.6](/Project_CCNULogin)
 
 ## 学习笔记
 - [PyQt5快速编程@2017](/Project_PyQt5NoteBook)
