@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="Main">
+    <file>Media/apps.png</file>
+    <file>Media/tool.png</file>
+    <file>Media/exit.png</file>
+    <file>Media/info.png</file>
+    <file>Media/help.png</file>
+    <file>Media/logo.png</file>
+  </qresource>
+</RCC>
