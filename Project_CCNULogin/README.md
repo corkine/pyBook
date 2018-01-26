@@ -1,3 +1,7 @@
+> 本程序可用于华中师范大学无线校园网（SSID:CCNU）以及有线校园网的连接认证，可以替代网页认证。本程序适用于解决：1、开机程序自动登录网络，而无须手动干预。2、连接网络后打不开认证界面（尤其是宿舍晚上以及图书馆等人较多的地方）。由于学校网络认证复杂，新旧混乱，因此程序提供了自动切换认证服务器的功能。
+
+比如，当你在田家炳登录，使用的是旧认证服务器，而在图书馆登录，使用的是新服务器，二者登录地址不同，传递参数不同，采用一般登录脚本，虽然可以登录，但是由于登录的服务器不是当前区域的服务器，因此亦不能上网。本程序可自动识别和判断与自动切换，一切只需要按下“登录”按钮，或者启动应用即可（静默登录模式下）。虽然说，正因如此，本来50行的程序活生生的写了500行。
+
 ![](/Media/login.png)
 
 ## 一、写作缘由
@@ -19,9 +23,13 @@
 
 ## 三、功能
 
+程序主界面如图所示：
+
+![](/Media/login_show.png)
+
 ### 1、静默登陆
 
-![](/Media/login5.png)
+![](/Media/login_s.png)
 
 程序添加到开机启动项并且勾选“静默登录”后，开机时会自动登录，程序不会显示主界面，只有状态栏图标和气泡通知。
 
@@ -62,11 +70,15 @@ Python 3.X，需要安装requests包（脚本）以及pyqt5包（GUI）。
 
 ## 六、程序
 
+![](/Media/loginmac.png)
+
 直接上程序吧，具体项目参见[项目Github仓库](https://github.com/corkine/pyBook/tree/master/Project_CCNULogin)。唯一感叹一点的就是，区区四五行的POST登陆，真正实现成一个功能，竟然写了个500行的程序，其中接近400行处理相关逻辑，100行左右处理UI。一个遗憾是，没有使用多线程，因为Qt的多线程还没有开始学习，Python的多线程和PyQt兼容性不太好，并且也不安全，所以就没有用。
 
 postit.py这个是脚本，可以直接使用，不过要实现自动登录、自动判断登录状态并且在多次登录失败的情况下切换新旧服务器，以及GUI的话，就需要另一个main.py以及资源、UI布局文件，直接运行main.py即可。
 
-Windows打包二进制文件适用于64位PC，在/dist目录下，[点击下载](/Project_CCNULogin/dist/CCNULogin.rar)
+### 打包可执行（EXE）文件下载
+
+Windows打包二进制文件适用于64位PC，不需要任何依赖，不需要Python和其依赖包，可以直接执行，程序在/dist目录下，[点击下载](https://github.com/corkine/pyBook/raw/master/Project_CCNULogin/dist/CCNULogin.rar)
 
 ## 七、程序核心代码
 
@@ -110,47 +122,8 @@ Windows打包二进制文件适用于64位PC，在/dist目录下，[点击下载
             errmessage = str(traceback.format_exc())
             return None,"0",errmessage
 
-### 2、测试登录代码
 
-    def testLogin(self):
-        if self.sender() == self.pushButton_lanlogin:
-            self.pushButton_lanlogin.setChecked(True)
-            self.goPost(choose = "lan",check_link_userrole=False)
-        elif self.sender() == self.pushButton_lanlogout:
-            self.pushButton_lanlogin.setChecked(False)
-            code,_,_ = postit.loginoutCCNU()
-            if code == "200":
-                self.postit_callback.emit("[200] 成功注销您的新服务器登录。")
-        elif self.sender() == self.pushButton_wlanlogin:
-            self.pushButton_wlanlogin.setChecked(True)
-            self.goPost(choose = "wlan",check_link_userrole=False)
-        elif self.sender() == self.pushButton_wlanlogout:
-            self.pushButton_wlanlogin.setChecked(False)
-            code,_,info = postit.loginoutCCNUWLAN()
-            if code == "200":
-                self.postit_callback.emit("[200] 成功注销您的旧服务器登录。")
-        elif self.sender() == self.pushButton_test:
-            self.checkLink(show = 1)    def testLogin(self):
-        if self.sender() == self.pushButton_lanlogin:
-            self.pushButton_lanlogin.setChecked(True)
-            self.goPost(choose = "lan",check_link_userrole=False)
-        elif self.sender() == self.pushButton_lanlogout:
-            self.pushButton_lanlogin.setChecked(False)
-            code,_,_ = postit.loginoutCCNU()
-            if code == "200":
-                self.postit_callback.emit("[200] 成功注销您的新服务器登录。")
-        elif self.sender() == self.pushButton_wlanlogin:
-            self.pushButton_wlanlogin.setChecked(True)
-            self.goPost(choose = "wlan",check_link_userrole=False)
-        elif self.sender() == self.pushButton_wlanlogout:
-            self.pushButton_wlanlogin.setChecked(False)
-            code,_,info = postit.loginoutCCNUWLAN()
-            if code == "200":
-                self.postit_callback.emit("[200] 成功注销您的旧服务器登录。")
-        elif self.sender() == self.pushButton_test:
-            self.checkLink(show = 1)
-
-### 3、核心登录代码
+### 2、核心登录代码
 
     def goPost(self,choose = "",check_link_userrole=True,show_check=True):
         # self.postit_callback.emit("登录中...")
@@ -210,55 +183,8 @@ Windows打包二进制文件适用于64位PC，在/dist目录下，[点击下载
             check = 2
         return response,code,errmesage,check
 
-### 4、登录服务器判断和切换代码
 
-    def goLogin(self):
-        if self.checkLink(show = 0) == 1:
-            self.postit_callback.emit("已连接互联网，已取消登录请求（可在“测试”选项注销服务器登录后再试）")
-        else:
-            r,code,_,check = self.goPost(choose = "",check_link_userrole=False)
-            # 有可能存在没有连上网但是正确登录到服务器的情况。
-            if code == "0" and r == "200":
-                r,code,_,check = self.goPost(choose = "",check_link_userrole=True)
-            if str(check) != "1":
-                r,code,_,check = self.goPost(choose = "",check_link_userrole=True)
-            if str(check) != "1":
-                r,code,_,check = self.goPost(choose = "",check_link_userrole=True)
-            if str(check) != "1":
-                r,code,_,check = self.goPost(choose = "",check_link_userrole=True)
-            if str(check) != "1":
-                self.loadUserrole()
-                autoserver = self.userrole[5]
-                iswlan = self.userrole[2][1]
-                userrole_temp = self.userrole
-                if iswlan:
-                    try:
-                        postit.loginoutCCNUWLAN()
-                    except Exception as err:
-                        print("在旧服务器登出过程中发生错误")
-                else:
-                    try:
-                        postit.loginoutCCNU()
-                    except Exception as err:
-                        print("在新服务器登出过程中发生错误")
-                if autoserver:
-                    if iswlan:
-                        self.radioButton_school.setChecked(True)
-                        self.postit_callback.emit("旧服务器无响应，正尝试其他服务器")
-                        r,code,_,check= self.goPost(choose = "lan",check_link_userrole=True)
-                        if str(check) != "1":
-                            self.userrole = userrole_temp
-                            self.restoreUserrole()
-                            self.postit_callback.emit("""[FINAL]<span style=" color:#ff0000;"> 无法连接互联网。</span>""") 
-                    elif not iswlan:
-                        self.postit_callback.emit("新服务器无响应，正尝试其他服务器")
-                        r,code,_,check = self.goPost(choose = "wlan",check_link_userrole=True)
-                        if str(check) != "1":
-                            self.postit_callback.emit("""[FINAL]<span style=" color:#ff0000;"> 无法连接互联网。</span>""")          
-                else:
-                    self.postit_callback.emit("""[FINAL]<span style=" color:#ff0000;"> 无法连接互联网。</span>""")
-
-### 5、静默登陆和服务器自动切换代码
+### 3、静默登陆和服务器自动切换代码
 
     def goSlience(self):
         if self.checkLink(show=0) == 1:
@@ -332,24 +258,8 @@ Windows打包二进制文件适用于64位PC，在/dist目录下，[点击下载
             self.trayIcon.showMessage("登录失败","[ERR]硬件故障",msgIcon_err)
         return response,code,errmessage,check
 
-### 6、互联网连接检查代码
+## 八、版权、作者和使用说明
 
-    def checkLink(self,show=1):
-        state,code,info = postit.testNet(3)
-        if state == "200" and code == "1":
-            if show != 0:
-                self.postit_callback.emit("[测试连接] " + info)
-            return 1
-        elif state == None and code == "0":
-            if show != 0:
-                self.postit_callback.emit("[测试连接] " + info)
-            return 0
-        else:
-            QMessageBox.information(self,"Website Checker",str(info)) 
+![](/Media/login_cp.png)
 
-
-> 作者：Corkine Ma 
->
-> 网站：www.mazhangjing.com
->
-> 2018.01 于武昌
+本程序使用 Python 和 Qt 开发，程序遵循GPL v2开源协议，你可以在 http://tools.mazhangjing.com 此网站找到程序的源代码，如果没有，请联系作者。
