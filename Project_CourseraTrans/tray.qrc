@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="Main">
+    <file>Media/normal.png</file>
+    <file>Media/working.png</file>
+  </qresource>
+</RCC>

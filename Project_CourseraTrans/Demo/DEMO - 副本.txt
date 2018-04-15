@@ -1,0 +1,402 @@
+﻿Having talked about the eye and retina,
+the next obvious question is, well, what about the rest of the visual system? Where do things go from the eye? So, the easiest way I think
+to introduce this is in terms of what is called
+the primary visual pathway. And, Let me explain that
+using this diagram. In the simplest terms
+the problem with the pathways is just the eye a way station
+called the thalamus. We will talk about the details of this
+in a minute and the thalamus here, and then there is visual cortex
+which is here which is the region. Coming through the thalamus
+reach the visual system and basically all the information that
+comes into the visual cortex. Which is where we presume the processing
+that ends up with perception to occur comes through the thalamus into
+the Primary visual cortex. Before getting into the details
+of that I want you to be sure you recognize that there are at least
+two other pathways that are shown in this dotted lines here and here. But don’t concern perceptions so the reason that super [INAUDIBLE]
+pathway Is called what it is. It's taken as primary because it's
+the root from the eye to what we perceive, what we end up seeing, and that's of
+course what the course is mainly about, what we're going to be talking about. But the visual system does
+a lot more than this. The information from the retina
+passes to two other centers. The first of these Is called the superior colliculus, and it's here. The colliculus means little hill. These are two hills on the dorsal surface
+of the mid brain and the brain stem. And their concerned with eye movements. So, I guess it should be obvious
+that this is a big part of vision. I mean when something happens
+in visual space you want to turn your body and
+your eyes in particular, you want to turn towards the source of that
+happening and see what's going on there. So you have to do this by movements that are coordinated
+between the left and the right eye. And the rather complicated
+circuitry that does this is information from the retina that
+reaches the superior colliculi. As I said, these two little bumps on
+the back surface of the mid brain so their concern with coordinating eye movements
+with what's going on in visual space. With body movements,
+with reflexes that keep your eyes trained on something if you want
+to follow a moving object and so on. There are many facets that
+the superior is concerned with. The other pathway that is not
+the primary visual pathway but very important is the autonomic pathway
+that controls the pupillary light reflex, so it's this pathway shown
+in the dotted line here. And this is going to an autonomic
+nucleus again in the midbrain region that is concerned
+with pupilary dilation. So you probably noticed that when
+you're looking at the mirror you shine a flashlight in your eye
+the pupil constricts. And it constricts a lot of strongly and obviously in the presence of light or
+dilate in the presence of darkness. Why is that? The reason is that when you operate in
+different amounts of light as we talked about last time there's a huge range of
+light from star light to bright sun light. You don't want the apparatus in the retina
+damaged by to much light coming in. You want to modulate the amount of
+light coming in and by Contracting or dilating the pupil and that's done by the nucleus that receives information
+from the retinal started line pathway. And dilates or contracts the pupil
+according to the level of ambient light. So let's go back to a little bit different
+view of the primary visual pathway, which is again,
+the eye going to the thalamus. And from the thalamus to the visual
+cortex, and talk in a little bit more detail about each of these three
+stations in the primary visual pathway. So what I've added to this diagram, you
+can think of this as a piece of paper, or an object in visual space, half of
+which is blue and half of which is red. Think of a piece of paper
+colored in that way. And imagine further that you're looking at
+a central point on that piece of paper. And my reason for emphasizing this,
+and this is really the visual field. It's an object in the visual
+field that you're looking at and you're looking at a particular point. By focusing the line of sight, remember,
+coming to the phobia from the two eyes, you're focusing that
+on a particular point. So, what's color coded in the rest
+of the visual system in the red and the purple is the pathway that
+the information on the right, and left side of this piece of paper
+take in getting your cortex and vision perception that follows. So this is visual space. This is an object in visual space,
+but you'll see by the color coding in a primary visual pathway that
+it's a little bit complicated. And the bottom line is that all of the
+information on one side of visual space, let's say the right side of visual space
+on this piece of paper that you're looking at, goes to different
+sides of the two retinas. So, the blue information coming from the
+object in visual space goes to this side of this retina, and
+this side of this retina. And that information needs to be brought
+together, and it is brought together by having the information cross at this
+region that's called the optic chasm. So that all of the blue information
+comes to the same thalamus, and from the thalamus,
+on to the visual cortex. So you're keeping the right
+side of space together, and you're keeping it together through the
+stations of the primary visual pathway. Conversely, for the left side,
+that information is going to this side of this eye's retina to this side of this
+eye's retina as this color coding shows. And again crossing the red stuff is
+crossing at the eye optic chiasm, or not in this case in
+this eye on the same side, reaching the thalamus and
+hence keeping all this stuff. On the other side of visual space, on
+the other side of this piece of paper that you're looking at together
+in the opposite hemisphere. So, this seems like a crazy
+way of doing vision. We talked last time about the odd way that the retina was set up with
+the photoreceptors at the back of the eye. The information from light going
+through all the junk that's in front of the photoreceptors. And the reason why that was
+having to do with retinal rod and cone receptor metabolism. Here's another thing that
+seems odd to say the least. I mean, why would you want to have the
+information crossing at the optic chiasm and reaching the hemispheres
+in this rather strange way. Why wouldn't you want to keep
+the information from one eye going to one hemisphere and
+the other eye going to another hemisphere. Well lots of animals in
+fact are set up like that, animals with eyes on
+the sides of their heads. Horses, cows, for example that
+are wall-eyed don't have this crossing or at least they have much
+less of this crossing. And the question arises from primates
+like us and other non-human primates. Why is this? Well, the short answer is
+that nobody really knows. The best guess is that this has to do with
+the course of evolution from our fishy ancestors way back when
+who climbed out on land, but when they were in the sea they used
+a tail flip response to avoid predators. And people who've looked carefully at the
+tail flip response have shown that it's much more effective if the information goes to the opposite side
+of visual system in fish. And the general idea is that
+the evolutionary carry over into us from the tail
+flip affecting this to our other strangely laid out visual
+system is on this evolutionary basis. You probably are aware that
+many people have pointed out that evolution is a tinkering process. It's not logical. It's just using whatever works and carrying on whatever works into
+the next evolutionary stage. So we're presumably the inheritors of
+this way that fissures behave, but the answer for why this setup of
+the visual system is the way it is is just a best guess about that.
+
+
+
+谈到眼睛和视网膜后，下一个显而易见的问题是，视觉系统的其他部分呢？
+事情从何而来？
+所以，我认为最简单的方式就是所谓的主要视觉路径。
+而且，让我用这个图解释一下。
+用最简单的术语来说，路径的问题只是眼睛的一种叫做丘脑的方式。
+我们将在这里谈论这个细节以及这里的丘脑，然后在这里是这个地区的视觉皮层。
+通过丘脑来到达视觉系统和基本所有进入视觉皮层的信息。
+这是我们认为最终发生感知的过程通过丘脑进入初级视觉皮层。
+在深入讨论细节之前，我希望您能确定您认识到至少有两条其他路径在这里和这里用虚线表示。
+但不要关注知觉，所以超级[不可信]通路被称为它的原因。
+它被认为是首要的，因为它是从我们的眼睛到我们所感知的事物的根源，我们最终看到的是什么，这当然是该课程的主要内容，我们将要讨论的内容。
+但是视觉系统比这个更重要。
+来自视网膜的信息传递给另外两个中心。
+第一个被称为上丘，它在这里。
+丘陵意味着小山丘。
+这些是中脑和脑干背面的两个小山。
+他们关注眼球运动。
+所以，我想这应该是显而易见的，这是一个很大的愿景。
+我的意思是，当视觉空间中发生某些事情时，特别是想要转变身体和眼睛的时候，你想转向发生的事情的来源，看看那里发生了什么。
+所以你必须通过左右眼协调的动作来做到这一点。
+这样做的相当复杂的电路是从视网膜到达上丘的信息。
+正如我所说，中脑背面的这两个小颠簸让他们关注如何协调眼球运动与视觉空间中发生的事情。
+随着身体动作，反射，如果你想跟随一个移动的物体等等，你的眼睛在训练某些东西。
+上级关心的很多方面。
+另一种途径不是主要的视觉通路，但非常重要的是控制瞳孔光反射的自主通路，所以它在这里用虚线表示。
+这是在与瞳孔扩张有关的中脑区域再次发生自主神经核。
+所以你可能注意到，当你看着镜子时，你的眼睛里闪着一道手电筒瞳孔收缩。
+在黑暗中存在光或扩张的情况下，它会强有力地明显收缩。
+这是为什么？
+原因在于，当我们上次谈到的不同光量下操作时，从星光到明亮的太阳光有很大范围的光线。
+你不希望视网膜中的设备受到太多光线的损坏。
+你想要调节进入的光量，通过收缩或扩张瞳孔，这是由从视网膜开始线路通道接收信息的细胞核完成的。
+根据环境光线的水平来扩大或缩小瞳孔。
+所以让我们回到对主要视觉路径的一点点不同的看法，这又是眼睛进入丘脑。
+从丘脑到视觉皮层，并在主要视觉通路中详细讨论这三个站的每一个。
+所以我给这张图添加了一些东西，你可以把它看作是一张纸，或者是视觉空间中的一个物体，其中一半是蓝色的，一半是红色的。
+想想那张着色的那张纸。
+进一步想象一下，你正在看那张纸的中心点。
+而我强调这一点的原因，这是真正的视野。
+它是视野中的一个对象，您正在看，并且您正在查看某个特定点。
+通过聚焦视线，请记住，从两只眼睛来到恐惧症，您将注意力集中在某个特定点上。
+所以，在红色和紫色视觉系统的其余部分中，颜色代码是右边和左边的信息在获取您的皮层和视觉感知方面的路径。
+所以这是视觉空间。
+这是视觉空间中的一个对象，但是您会通过主要视觉路径中的颜色编码看到它有点复杂。
+底线是视觉空间一侧的所有信息，比如说你正在看的这张纸上的视觉空间的右侧，会进入两个视网膜的不同侧。
+因此，来自视觉空间中物体的蓝色信息会传到这个视网膜的这一侧，以及这个视网膜的这一侧。
+而且这些信息需要汇集在一起​​，并且通过在这个地区称为视觉鸿沟的信息交叉在一起。
+因此，所有的蓝色信息都来自同一个丘脑，从丘脑到视觉皮层。
+所以你将空间的右侧保持在一起，并且通过主视觉通道的站点将它们保持在一起。
+相反，对于左侧来说，该信息将在该眼睛视网膜的这一侧到达该眼睛视网膜的这一侧，如该颜色编码所示。
+再次穿过红色的东西穿过眼睛的视交叉处，或者不在同一侧的这个眼睛中，到达丘脑并因此保留所有这些东西。
+在视觉空间的另一面，在这张纸的另一面，你在对面的半球一起看着。
+所以，这看起来像是一个疯狂的视觉方式。
+我们上次谈到了视网膜与眼睛后部的感光器搭配的奇怪方式。
+来自光线的信息通过感光器前面的所有垃圾。
+并且之所以这是与视网膜杆和锥体受体代谢有关的原因。
+这是另一件看起来很奇怪的事情。
+我的意思是，你为什么要让信息在视交叉处交叉，并以这种奇怪的方式到达半球。
+你为什么不想让一只眼睛的信息进入一个半球而另一只眼睛进入另一个半球？
+事实上，很多动物都是这样设置的，动物的头部侧面有眼睛。
+马匹，奶牛，例如那些眼睛都没有这个过路口，或者至少他们的这个过路口少得多。
+这个问题来自于我们这样的灵长类动物和其他非人类灵长类动物。
+为什么是这样？
+那么简单的答案是没人知道。
+最好的猜测是，这与我们鱼类祖先的进化过程有关，当他们在陆地上爬行时，当他们在海中时，他们使用尾部翻转反应来避免捕食者。
+仔细研究尾部翻转反应的人已经表明，如果信息传到鱼的视觉系统的反面，它会更加有效。
+总体思路是，从这个影响到我们另一个奇怪布局的视觉系统的尾部翻转进化到我们的进化是在这个进化的基础上。
+你可能知道，很多人都指出进化是一个修补过程。
+这不合逻辑。
+它只是使用任何作品，并进行下一个演变阶段的任何作品。
+所以我们大概是这种裂缝行为的继承者，但是为什么这种视觉系统的设置就是这样的答案只是对此的一个最佳猜测。
+
+
+
+0﻿Having talked about the eye and retina, the next obvious question is, well, what about the rest of the visual system?
+谈到眼睛和视网膜后，下一个显而易见的问题是，视觉系统的其他部分呢？
+
+1 Where do things go from the eye?
+事情从何而来？
+
+2 So, the easiest way I think to introduce this is in terms of what is called the primary visual pathway.
+所以，我认为最简单的方式就是所谓的主要视觉路径。
+
+3 And, Let me explain that using this diagram.
+而且，让我用这个图解释一下。
+
+4 In the simplest terms the problem with the pathways is just the eye a way station called the thalamus.
+用最简单的术语来说，路径的问题只是眼睛的一种叫做丘脑的方式。
+
+5 We will talk about the details of this in a minute and the thalamus here, and then there is visual cortex which is here which is the region.
+我们将在这里谈论这个细节以及这里的丘脑，然后在这里是这个地区的视觉皮层。
+
+6 Coming through the thalamus reach the visual system and basically all the information that comes into the visual cortex.
+通过丘脑来到达视觉系统和基本所有进入视觉皮层的信息。
+
+7 Which is where we presume the processing that ends up with perception to occur comes through the thalamus into the Primary visual cortex.
+这是我们认为最终发生感知的过程通过丘脑进入初级视觉皮层。
+
+8 Before getting into the details of that I want you to be sure you recognize that there are at least two other pathways that are shown in this dotted lines here and here.
+在深入讨论细节之前，我希望您能确定您认识到至少有两条其他路径在这里和这里用虚线表示。
+
+9 But don’t concern perceptions so the reason that super [INAUDIBLE] pathway Is called what it is.
+但不要关注知觉，所以超级[不可信]通路被称为它的原因。
+
+10 It's taken as primary because it's the root from the eye to what we perceive, what we end up seeing, and that's of course what the course is mainly about, what we're going to be talking about.
+它被认为是首要的，因为它是从我们的眼睛到我们所感知的事物的根源，我们最终看到的是什么，这当然是该课程的主要内容，我们将要讨论的内容。
+
+11 But the visual system does a lot more than this.
+但是视觉系统比这个更重要。
+
+12 The information from the retina passes to two other centers.
+来自视网膜的信息传递给另外两个中心。
+
+13 The first of these Is called the superior colliculus, and it's here.
+第一个被称为上丘，它在这里。
+
+14 The colliculus means little hill.
+丘陵意味着小山丘。
+
+15 These are two hills on the dorsal surface of the mid brain and the brain stem.
+这些是中脑和脑干背面的两个小山。
+
+16 And their concerned with eye movements.
+他们关注眼球运动。
+
+17 So, I guess it should be obvious that this is a big part of vision.
+所以，我想这应该是显而易见的，这是一个很大的愿景。
+
+18 I mean when something happens in visual space you want to turn your body and your eyes in particular, you want to turn towards the source of that happening and see what's going on there.
+我的意思是，当视觉空间中发生某些事情时，特别是想要转变身体和眼睛的时候，你想转向发生的事情的来源，看看那里发生了什么。
+
+19 So you have to do this by movements that are coordinated between the left and the right eye.
+所以你必须通过左右眼协调的动作来做到这一点。
+
+20 And the rather complicated circuitry that does this is information from the retina that reaches the superior colliculi.
+这样做的相当复杂的电路是从视网膜到达上丘的信息。
+
+21 As I said, these two little bumps on the back surface of the mid brain so their concern with coordinating eye movements with what's going on in visual space.
+正如我所说，中脑背面的这两个小颠簸让他们关注如何协调眼球运动与视觉空间中发生的事情。
+
+22 With body movements, with reflexes that keep your eyes trained on something if you want to follow a moving object and so on.
+随着身体动作，反射，如果你想跟随一个移动的物体等等，你的眼睛在训练某些东西。
+
+23 There are many facets that the superior is concerned with.
+上级关心的很多方面。
+
+24 The other pathway that is not the primary visual pathway but very important is the autonomic pathway that controls the pupillary light reflex, so it's this pathway shown in the dotted line here.
+另一种途径不是主要的视觉通路，但非常重要的是控制瞳孔光反射的自主通路，所以它在这里用虚线表示。
+
+25 And this is going to an autonomic nucleus again in the midbrain region that is concerned with pupilary dilation.
+这是在与瞳孔扩张有关的中脑区域再次发生自主神经核。
+
+26 So you probably noticed that when you're looking at the mirror you shine a flashlight in your eye the pupil constricts.
+所以你可能注意到，当你看着镜子时，你的眼睛里闪着一道手电筒瞳孔收缩。
+
+27 And it constricts a lot of strongly and obviously in the presence of light or dilate in the presence of darkness.
+在黑暗中存在光或扩张的情况下，它会强有力地明显收缩。
+
+28 Why is that?
+这是为什么？
+
+29 The reason is that when you operate in different amounts of light as we talked about last time there's a huge range of light from star light to bright sun light.
+原因在于，当我们上次谈到的不同光量下操作时，从星光到明亮的太阳光有很大范围的光线。
+
+30 You don't want the apparatus in the retina damaged by to much light coming in.
+你不希望视网膜中的设备受到太多光线的损坏。
+
+31 You want to modulate the amount of light coming in and by Contracting or dilating the pupil and that's done by the nucleus that receives information from the retinal started line pathway.
+你想要调节进入的光量，通过收缩或扩张瞳孔，这是由从视网膜开始线路通道接收信息的细胞核完成的。
+
+32 And dilates or contracts the pupil according to the level of ambient light.
+根据环境光线的水平来扩大或缩小瞳孔。
+
+33 So let's go back to a little bit different view of the primary visual pathway, which is again, the eye going to the thalamus.
+所以让我们回到对主要视觉路径的一点点不同的看法，这又是眼睛进入丘脑。
+
+34 And from the thalamus to the visual cortex, and talk in a little bit more detail about each of these three stations in the primary visual pathway.
+从丘脑到视觉皮层，并在主要视觉通路中详细讨论这三个站的每一个。
+
+35 So what I've added to this diagram, you can think of this as a piece of paper, or an object in visual space, half of which is blue and half of which is red.
+所以我给这张图添加了一些东西，你可以把它看作是一张纸，或者是视觉空间中的一个物体，其中一半是蓝色的，一半是红色的。
+
+36 Think of a piece of paper colored in that way.
+想想那张着色的那张纸。
+
+37 And imagine further that you're looking at a central point on that piece of paper.
+进一步想象一下，你正在看那张纸的中心点。
+
+38 And my reason for emphasizing this, and this is really the visual field.
+而我强调这一点的原因，这是真正的视野。
+
+39 It's an object in the visual field that you're looking at and you're looking at a particular point.
+它是视野中的一个对象，您正在看，并且您正在查看某个特定点。
+
+40 By focusing the line of sight, remember, coming to the phobia from the two eyes, you're focusing that on a particular point.
+通过聚焦视线，请记住，从两只眼睛来到恐惧症，您将注意力集中在某个特定点上。
+
+41 So, what's color coded in the rest of the visual system in the red and the purple is the pathway that the information on the right, and left side of this piece of paper take in getting your cortex and vision perception that follows.
+所以，在红色和紫色视觉系统的其余部分中，颜色代码是右边和左边的信息在获取您的皮层和视觉感知方面的路径。
+
+42 So this is visual space.
+所以这是视觉空间。
+
+43 This is an object in visual space, but you'll see by the color coding in a primary visual pathway that it's a little bit complicated.
+这是视觉空间中的一个对象，但是您会通过主要视觉路径中的颜色编码看到它有点复杂。
+
+44 And the bottom line is that all of the information on one side of visual space, let's say the right side of visual space on this piece of paper that you're looking at, goes to different sides of the two retinas.
+底线是视觉空间一侧的所有信息，比如说你正在看的这张纸上的视觉空间的右侧，会进入两个视网膜的不同侧。
+
+45 So, the blue information coming from the object in visual space goes to this side of this retina, and this side of this retina.
+因此，来自视觉空间中物体的蓝色信息会传到这个视网膜的这一侧，以及这个视网膜的这一侧。
+
+46 And that information needs to be brought together, and it is brought together by having the information cross at this region that's called the optic chasm.
+而且这些信息需要汇集在一起​​，并且通过在这个地区称为视觉鸿沟的信息交叉在一起。
+
+47 So that all of the blue information comes to the same thalamus, and from the thalamus, on to the visual cortex.
+因此，所有的蓝色信息都来自同一个丘脑，从丘脑到视觉皮层。
+
+48 So you're keeping the right side of space together, and you're keeping it together through the stations of the primary visual pathway.
+所以你将空间的右侧保持在一起，并且通过主视觉通道的站点将它们保持在一起。
+
+49 Conversely, for the left side, that information is going to this side of this eye's retina to this side of this eye's retina as this color coding shows.
+相反，对于左侧来说，该信息将在该眼睛视网膜的这一侧到达该眼睛视网膜的这一侧，如该颜色编码所示。
+
+50 And again crossing the red stuff is crossing at the eye optic chiasm, or not in this case in this eye on the same side, reaching the thalamus and hence keeping all this stuff.
+再次穿过红色的东西穿过眼睛的视交叉处，或者不在同一侧的这个眼睛中，到达丘脑并因此保留所有这些东西。
+
+51 On the other side of visual space, on the other side of this piece of paper that you're looking at together in the opposite hemisphere.
+在视觉空间的另一面，在这张纸的另一面，你在对面的半球一起看着。
+
+52 So, this seems like a crazy way of doing vision.
+所以，这看起来像是一个疯狂的视觉方式。
+
+53 We talked last time about the odd way that the retina was set up with the photoreceptors at the back of the eye.
+我们上次谈到了视网膜与眼睛后部的感光器搭配的奇怪方式。
+
+54 The information from light going through all the junk that's in front of the photoreceptors.
+来自光线的信息通过感光器前面的所有垃圾。
+
+55 And the reason why that was having to do with retinal rod and cone receptor metabolism.
+并且之所以这是与视网膜杆和锥体受体代谢有关的原因。
+
+56 Here's another thing that seems odd to say the least.
+这是另一件看起来很奇怪的事情。
+
+57 I mean, why would you want to have the information crossing at the optic chiasm and reaching the hemispheres in this rather strange way.
+我的意思是，你为什么要让信息在视交叉处交叉，并以这种奇怪的方式到达半球。
+
+58 Why wouldn't you want to keep the information from one eye going to one hemisphere and the other eye going to another hemisphere.
+你为什么不想让一只眼睛的信息进入一个半球而另一只眼睛进入另一个半球？
+
+59 Well lots of animals in fact are set up like that, animals with eyes on the sides of their heads.
+事实上，很多动物都是这样设置的，动物的头部侧面有眼睛。
+
+60 Horses, cows, for example that are wall-eyed don't have this crossing or at least they have much less of this crossing.
+马匹，奶牛，例如那些眼睛都没有这个过路口，或者至少他们的这个过路口少得多。
+
+61 And the question arises from primates like us and other non-human primates.
+这个问题来自于我们这样的灵长类动物和其他非人类灵长类动物。
+
+62 Why is this?
+为什么是这样？
+
+63 Well, the short answer is that nobody really knows.
+那么简单的答案是没人知道。
+
+64 The best guess is that this has to do with the course of evolution from our fishy ancestors way back when who climbed out on land, but when they were in the sea they used a tail flip response to avoid predators.
+最好的猜测是，这与我们鱼类祖先的进化过程有关，当他们在陆地上爬行时，当他们在海中时，他们使用尾部翻转反应来避免捕食者。
+
+65 And people who've looked carefully at the tail flip response have shown that it's much more effective if the information goes to the opposite side of visual system in fish.
+仔细研究尾部翻转反应的人已经表明，如果信息传到鱼的视觉系统的反面，它会更加有效。
+
+66 And the general idea is that the evolutionary carry over into us from the tail flip affecting this to our other strangely laid out visual system is on this evolutionary basis.
+总体思路是，从这个影响到我们另一个奇怪布局的视觉系统的尾部翻转进化到我们的进化是在这个进化的基础上。
+
+67 You probably are aware that many people have pointed out that evolution is a tinkering process.
+你可能知道，很多人都指出进化是一个修补过程。
+
+68 It's not logical.
+这不合逻辑。
+
+69 It's just using whatever works and carrying on whatever works into the next evolutionary stage.
+它只是使用任何作品，并进行下一个演变阶段的任何作品。
+
+70 So we're presumably the inheritors of this way that fissures behave, but the answer for why this setup of the visual system is the way it is is just a best guess about that.
+所以我们大概是这种裂缝行为的继承者，但是为什么这种视觉系统的设置就是这样的答案只是对此的一个最佳猜测。
+
+71 
+
+
