@@ -10,6 +10,7 @@
 - [PyQt5 UIC & RCC Maker ver 0.1.0](/Project_PyQt5_RCC_UIC_Maker)
 - [去除论文复制中产生的“\\n”新行标识符 ver 1.0.0](/Project_RmoveNewlines)
 - [CCNU校园网自动登录器 ver 0.3.6](/Project_CCNULogin)
+- [Coursera字幕中文翻译助手 ver 1.0.1](/Project_CourseraTrans)
 
 ## 学习笔记
 - [PyQt5快速编程@2017](/Project_PyQt5NoteBook)
@@ -19,4 +20,4 @@
 
 > CM LOVE PYTHON & Qt & GNU/LINUX
 <br>
-> © 2017 Marvin Studio 鄂ICP备17002041号 Powered by VSCode;
+> © 2018 Marvin Studio 鄂ICP备17002041号 Powered by VSCode;
