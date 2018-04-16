@@ -1,6 +1,6 @@
 # Python Qt GUI 编程 - Coursera字幕中文翻译助手
 
-版本 1.0.1 更新时间 2018年4月15日
+版本 1.0.2 更新时间 2018年4月16日
 
 ## 概要
 
@@ -20,9 +20,9 @@ Coursera上有很多很棒的课程，但是非中文的授课对于中文环境
 
 ## 依赖
 
-二进制文件（rar压缩文件）可在Windows XP 以上的 ×64 Windows 操作系统运行
+二进制文件（rar压缩文件内的exe文件）可在Windows XP 以上的 ×64 Windows 操作系统运行
 
-python文件可以在任何安装了PyQt5和SIP的绝大部分现代计算机系统上运行，比如Linux，Windows，macOS等。注意，程序以来googletrans包。
+python文件可以在任何安装了PyQt5和SIP的绝大部分现代计算机系统上运行，比如Linux，Windows，macOS等。注意，程序依赖googletrans包。
 
 
-> [查看项目和文件](https://github.com/corkine/pyBook/tree/master/Project_CourseraTrans)
+[查看项目和文件](https://github.com/corkine/pyBook/tree/master/Project_CourseraTrans)

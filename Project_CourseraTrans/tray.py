@@ -13,7 +13,8 @@ def showbug(message):
     Tk().withdraw()
     info = showinfo('提示信息',str(message))
 
-version = "1.0.1"
+version = "1.0.2"
+log = "1.0.2 2018年4月16日 仅使用translate.google.cn服务器"
 
 class Form(QDialog):
     def __init__(self,parent=None):
@@ -89,8 +90,7 @@ class Form(QDialog):
         
     def transIt_free(self,f):
         translator = Translator(service_urls=[
-        'translate.google.cn',
-        'translate.google.com',
+        'translate.google.cn'
         ])
         translations = translator.translate(f,dest="zh-CN",src="en")
         r = []
