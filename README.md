@@ -11,6 +11,7 @@
 - [去除论文复制中产生的“\\n”新行标识符 ver 1.0.0](/Project_RmoveNewlines)
 - [CCNU校园网自动登录器 ver 0.3.6](/Project_CCNULogin)
 - [Coursera字幕中文翻译助手 ver 1.0.2](/Project_CourseraTrans)
+- [基于 MongoDB 的 Python Web 信息推送框架 ver 0.2.5](/Project_cmNotice)
 
 ## 学习笔记
 - [PyQt5快速编程@2017](/Project_PyQt5NoteBook)
