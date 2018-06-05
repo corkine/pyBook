@@ -32,7 +32,7 @@ config.py 文件中应包含数据库的地址、用户名和密码，数据库�
 
 推送效果如下：
 
-![](Project_cmNotice/media/slack1.png)
+![](/Project_cmNotice/media/slack1.png)
 
 ## 学习 Python 的终点 & 编程的起点
 
